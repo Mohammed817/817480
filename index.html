@@ -217,12 +217,7 @@ Error generating stack: `+i.message+`
       if (row) row.style.display = '';
     });
     links.slice(selected.length).forEach(function (a) { var row = a.closest('.relative.w-full') || a.parentElement; if (row) row.style.display = 'none'; });
-    var heading = Array.from(document.querySelectorAll('#root h2')).find(function (h) { return /اهم الاخبار/.test(h.textContent || ''); });
-    if (heading) {
-      var stamp = document.getElementById('4may-live-news-status');
-      if (!stamp) { stamp = document.createElement('div'); stamp.id = '4may-live-news-status'; stamp.style.cssText = 'font-size:12px;color:#666;background:#fff;text-align:right;padding:6px 12px;direction:rtl'; heading.parentElement.insertAdjacentElement('afterend', stamp); }
-      stamp.textContent = 'آخر تحديث: ' + new Date().toLocaleString('ar-YE') + ' — المصدر: صحيفة 4 مايو';
-    }
+
   }
   async function refresh() {
     try {
@@ -232,13 +227,6 @@ Error generating stack: `+i.message+`
       if (!data.items || !data.items.length) throw new Error('لم تصل أخبار من المصدر');
       renderItems(data.items);
     } catch (error) {
-      var heading = Array.from(document.querySelectorAll('#root h2')).find(function (h) { return /اهم الاخبار/.test(h.textContent || ''); });
-      if (heading && !document.getElementById('4may-live-news-status')) {
-        var stamp = document.createElement('div'); stamp.id = '4may-live-news-status';
-        stamp.style.cssText = 'font-size:12px;color:#8a4b08;background:#fff;text-align:right;padding:6px 12px;direction:rtl';
-        stamp.textContent = 'تعذر التحديث مؤقتًا؛ ستظهر العناوين المحفوظة وستتم إعادة المحاولة تلقائيًا.';
-        heading.parentElement.insertAdjacentElement('afterend', stamp);
-      }
       console.warn('4May news API refresh failed:', error);
     }
   }
