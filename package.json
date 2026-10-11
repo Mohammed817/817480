@@ -1,0 +1,13 @@
+{
+  "name": "4may-live-news-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website with server-side automatic news updates from 4may.net",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
